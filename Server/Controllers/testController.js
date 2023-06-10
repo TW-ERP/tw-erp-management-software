@@ -3,13 +3,14 @@ const testController = {};
 
 testController.getItem = async (req, res, next) => {
   try {
-    const query = 'select * from people limit 10';
+    const query = "SELECT password from userlogin where username = 'Michael';";
 
-    await db.query(query, (err, results) => {
+    db.query(query, (err, results) => {
       if (err) {
         next(err);
       }
 
+      //   console.log(results.rows);
       res.locals.people = results.rows;
 
       return next();

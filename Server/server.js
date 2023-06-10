@@ -3,7 +3,8 @@ const app = express();
 const path = require('path');
 const PORT = 3000;
 
-const testController = require('./Controllers/testController');
+const userController = require('./Controllers/userController');
+const dbRoute = require('./Routes/db');
 
 /* handle parsing request body */
 app.use(express.json());
@@ -17,11 +18,12 @@ app.get('/', (req, res) => {
   return res.status(200).sendFile(path.join(__dirname, '../index.html'));
 });
 
-// ADDED BY ANTHONY 6/10
-// handle get requests to the database
-app.get('/db', testController.getItem, (req, res) => {
-  return res.status(200).json(res.locals.people);
+app.post('/login', userController.verifyUser, (req, res) => {
+  return res.status(200);
 });
+
+// handle get requests to the database
+app.use('/db', dbRoute);
 
 // handle unknown paths
 app.use((req, res) => res.sendStatus(404));
