@@ -3,6 +3,8 @@ const app = express();
 const path = require('path');
 const PORT = 3000;
 
+const testController = require('./Controllers/testController');
+
 /* handle parsing request body */
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -13,6 +15,12 @@ app.use('/build', express.static(path.join(__dirname, '../build')));
 // serve index.html on the route '/'
 app.get('/', (req, res) => {
   return res.status(200).sendFile(path.join(__dirname, '../index.html'));
+});
+
+// ADDED BY ANTHONY 6/10
+// handle get requests to the database
+app.get('/db', testController.getItem, (req, res) => {
+  return res.status(200).json(res.locals.people);
 });
 
 // handle unknown paths
