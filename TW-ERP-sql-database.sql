@@ -55,7 +55,7 @@ CREATE TABLE sub_assembly_part (
 );
 
 CREATE TABLE user_info (
-  _id ing GENERATED ALWAYS AS IDENTITY,
+  _id int GENERATED ALWAYS AS IDENTITY,
   PRIMARY KEY (_id),
   user_name text NOT NULL,
   password text NOT NULL
