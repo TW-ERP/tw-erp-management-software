@@ -2,12 +2,12 @@
   "name": "tw-erp-management-software",
   "version": "1.0.0",
   "description": "",
-  "main": "./client/index.js",
+  "main": "./Client/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node Server/server.js",
     "build": "webpack --mode production",
-    "dev": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --hot --progress --color\" \"nodemon ./server/server.js\""
+    "dev": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --hot --progress --color\" \"nodemon ./Server/server.js\""
   },
   "author": "",
   "license": "ISC",
