@@ -6,6 +6,8 @@ const PORT = 3000;
 const userController = require('./Controllers/userController');
 const dbRoute = require('./Routes/db');
 
+console.log('in server.js');
+
 /* handle parsing request body */
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -17,9 +19,11 @@ app.use('/build', express.static(path.join(__dirname, '../build')));
 app.get('/', (req, res) => {
   return res.status(200).sendFile(path.join(__dirname, '../index.html'));
 });
-
+// still need a place to redirect after successful login
 app.post('/login', userController.verifyUser, (req, res) => {
-  return res.status(200);
+  if (res.locals.result === true) {
+    return res.redirect('/');
+  }
 });
 
 // handle get requests to the database
