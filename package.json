@@ -2,7 +2,7 @@
   "name": "tw-erp-management-software",
   "version": "1.0.0",
   "description": "",
-  "main": "./client/index.js",
+  "main": "./Client/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node Server/server.js",
