@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
+import { Route, Routes, useNavigate, Navigate } from 'react-router-dom';
 
-export default function Login(props) {
+function Login (props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const {setLoggedIn} = props;
+  const navigate = useNavigate();
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -14,6 +16,8 @@ export default function Login(props) {
   }
 
   const clickHandler = (event) => {
+    event.preventDefault();
+    navigate('/feed');
     fetch('/login', {
       method: 'POST',
       body: JSON.stringify({
@@ -26,24 +30,22 @@ export default function Login(props) {
     })
     .then(data => data.json())
     .then(data => console.log('verification result', data))
+    .catch(err => console.log('error', err));
 
-    .catch();
-
-    // const name = document.getElementById('userName');
-    // console.log(name.value);
-    event.preventDefault();
-    console.log(username);
-    console.log(password);
+    // // const name = document.getElementById('userName');
+    // // console.log(name.value);
+    // console.log(username);
+    // console.log(password);
   }
     return (
-        <form onSubmit={clickHandler}>
-          <div className="form-group">
+      <form onSubmit={clickHandler}>
+        <div className="form-group">
           <label htmlFor="name"></label>
           Username:
           <input id="userName"
-          type="text"
-          value={username}
-          onChange={handleUsernameChange}
+            type="text"
+            value={username}
+            onChange={handleUsernameChange}
           />
           Password:
           <input id="password"
@@ -52,8 +54,8 @@ export default function Login(props) {
             onChange={handlePasswordChange}
           />
           <button type="submit">Submit</button>
-          </div>
-        </form>
+        </div>
+      </form>
     );
 }
-
+export default Login;

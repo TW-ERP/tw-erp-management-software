@@ -10,8 +10,14 @@ userController.verifyUser = async (req, res, next) => {
   // deconstruct the req body to get user and password
   // console.log('req.body', req.body);
   const { username, password } = req.body;
-
-  const query = `select password from user_info where user_name = '${username}';`;
+  
+  console.log("Username: ", username);
+  console.log("Password: ", password);
+  
+  const query = `
+    SELECT password 
+    FROM user_info 
+    WHERE user_name = '${username}';`;
   // get hashed password and make query to db and see if it matches. If it does then redirect
   // the user to homepage
   // not working when trying to use db.query with promise chain

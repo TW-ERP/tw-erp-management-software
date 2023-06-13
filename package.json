@@ -4,10 +4,9 @@
   "description": "",
   "main": "./Client/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node Server/server.js",
     "build": "webpack --mode production",
-    "dev": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --hot --progress --color\" \"nodemon ./Server/server.js\""
+    "dev": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --hot --color\" \"nodemon ./Server/server.js\""
   },
   "author": "",
   "license": "ISC",
@@ -53,6 +52,7 @@
     "html-webpack-plugin": "^5.5.1",
     "isomorphic-fetch": "^3.0.0",
     "nodemon": "^2.0.7",
+    "react-router-dom": "^6.12.1",
     "webpack-cli": "^4.8.0",
     "webpack-dev-server": "^4.15.0"
   }
